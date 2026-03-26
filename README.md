@@ -1,30 +1,27 @@
 # 📊 Interactive Statistics Solver (R)
 
-A robust, menu-driven command-line tool built in R for performing a wide range of inferential statistical tests. This solver was designed to be resilient against user input errors and mathematically precise for academic and professional use.
+A robust, menu-driven command-line application built in R for performing a wide range of inferential statistical tests. This solver was designed with strict defensive programming principles to be resilient against user input errors while maintaining perfect mathematical precision for academic and professional use.
 
-## 🚀 Features
+## 🚀 Statistical Capabilities
 
-- **Proportions:** 1-Sample (Exact Binomial Test) and 2-Sample (Approximate) tests.
-- **Means:** Handles One-Sample Z/T tests, Paired T-tests, and Independent T-tests (Student's Pooled & Welch's).
-- **ANOVA:** One-Way Analysis of Variance with group-size validation.
-- **Chi-Square:** Both Goodness of Fit and Tests for Independence (Matrix-based).
+- **Proportions:** - 1-Sample: Utilizes Pearson's exact binomial method (`binom.test`) for maximum accuracy.
+  - 2-Sample: Approximate difference testing.
+- **Means:** Handles One-Sample Z/T tests, Paired T-tests, and Independent T-tests (dynamically switches between Student's Pooled and Welch's formulas based on variance).
+- **ANOVA:** One-Way Analysis of Variance with strict group-size validation.
+- **Chi-Square:** - Goodness of Fit: Supports both equal distributions and custom expected probabilities (validated to sum to 1).
+  - Test for Independence: Matrix-based 2-way table analysis.
 - **Planning:** Required Sample Size determination for both Means and Proportions.
 
-## 🛠️ Built-in Guardrails
+## 🛠️ Built-in Guardrails & UX
 
-- **Strict Input Validation:** Custom helpers for whole numbers, probabilities (0-1), and yes/no prompts to prevent "silent failures."
-- **Mathematical Accuracy:** Dynamically generates **Confidence Bounds** for one-sided tests and **Confidence Intervals** for two-sided tests.
-- **Error Handling:** Uses `tryCatch` blocks to catch mathematical impossibilities (like successes exceeding sample size) without crashing the program.
+- **Strict Input Validation:** Custom helper functions force clean data entry (e.g., blocking negative counts, forcing confidence levels to be strictly between 0 and 1, preventing successes from exceeding sample sizes).
+- **Mathematical Transparency:** Explicitly prints out the Null Value, Point Estimate, Standard Error, Critical Values (Z/T), and Margin of Error before presenting the final R test output.
+- **Dynamic Precision:** Automatically relabels outputs to identify **Confidence Bounds** for one-sided tests and **Confidence Intervals** for two-sided tests.
+- **Error Handling:** Uses `tryCatch` blocks to catch mathematical impossibilities without crashing the program loop.
 
 ## 📖 How to Use
 
 1. Open R or RStudio.
-2. Source the script: `source("stats_solver.R")`.
-3. Follow the on-screen prompts to select your test and enter your data.
-4. Type `q` at the main menu to exit safely.
-
-## 📈 Example Output (Mean Test)
-```text
-Statistic: 2.1540
-P-Value: 3.1245e-02
-95% Confidence Interval: [37.2100, 42.7900]
+2. Source the script: `source("stats_solver.R")`
+3. Follow the heavily labeled, plain-English prompts to select your test and enter your data.
+4. Type `q` at the main menu to exit the application safely.
